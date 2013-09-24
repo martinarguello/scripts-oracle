@@ -1,14 +1,22 @@
+SET ECHO ON
 DECLARE
     objdesc      PGM.MQOD;
     objectHandle PGM.MQOH;
-    QUEUENAME    VARCHAR2(100) := '&queuename';
-    DBLINKNAME   VARCHAR2(100) := '&dblinkname';
+    INSTANCENAME varchar2(100);
+    QUEUENAME    VARCHAR2(100) := 'SCOMP.QUEUE.COMPROBANTES.PUSH';
+    DBLINKNAME   VARCHAR2(100) := 'TEST_DESA96H';
 BEGIN
+
+    SELECT instance_name INTO INSTANCENAME
+    FROM  v$instance;
     
+    dbms_output.put_line('MQTEST> Instancia:  ' || INSTANCENAME);
     dbms_output.put_line('MQTEST> Fecha:  ' || to_char(sysdate,'YYYY/MM/DD HH24:MI:SS'));
     dbms_output.put_line('MQTEST> Modo:   OUTPUT');
     dbms_output.put_line('MQTEST> Queue:  ' || QUEUENAME);
     dbms_output.put_line('MQTEST> Dblink: ' || DBLINKNAME);
+
+
 
     objdesc.objectname := QUEUENAME;
     objdesc.dblinkname := DBLINKNAME;     
