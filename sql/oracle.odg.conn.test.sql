@@ -10,7 +10,7 @@ BEGIN
     SELECT instance_name INTO INSTANCENAME
     FROM  v$instance;
     
-    dbms_output.put_line('MQTEST> Instancia:  ' || INSTANCENAME);
+    dbms_output.put_line('MQTEST> SID:    ' || INSTANCENAME);
     dbms_output.put_line('MQTEST> Fecha:  ' || to_char(sysdate,'YYYY/MM/DD HH24:MI:SS'));
     dbms_output.put_line('MQTEST> Modo:   OUTPUT');
     dbms_output.put_line('MQTEST> Queue:  ' || QUEUENAME);
